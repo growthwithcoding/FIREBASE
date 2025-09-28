@@ -7,7 +7,7 @@
 ![Tests](https://img.shields.io/badge/tests-pending-lightgrey)
 ![CI](https://img.shields.io/badge/ci-pending-lightgrey)
 ![CD](https://img.shields.io/badge/cd-pending-lightgrey)
-![Release](https://img.shields.io/badge/release-v0.0.1--base-green)
+![Release](https://img.shields.io/badge/release-v1.0.0-purple)
 
 This repository is the **Assignment 1 project** for **Building Secure User Authentication with Firebase**.  
 It forms the foundation for all **future lessons and the Module Final Project**.  
@@ -19,10 +19,18 @@ You will extend this app with **Firestore, Testing, CI/CD, and Deployment** in l
 
 ### Firebase Auth
 - **Register.tsx** → Create user with email + password
-- **Login.tsx** → Login + logout with Firebase Auth
-- **App.tsx** → Tracks `onAuthStateChanged` and conditionally renders UI
+- **Login.tsx** → Login + logout with Firebase Auth, reset password, remember me
+- **App.tsx** → Tracks `onAuthStateChanged`, toggle between login/register
 - **firebaseConfig.ts** → Firebase initialization + Auth export  
 - **SAMPLE_firebaseConfig.ts** → Included as a template. Copy this file, rename it to `firebaseConfig.ts`, and insert your own Firebase credentials. This way your real settings are ignored by Git but the sample stays committed.
+
+### GUI Improvements
+- Custom **glassmorphism design** with purple gradient background
+- **Toggle tabs** for Login and Create Account
+- **Pill-shaped inputs** with icons for email + password
+- **Remember me / Forgot password** row
+- **White rounded buttons**
+- Added favicon via [favicon.io](https://favicon.io/favicon-converter/)
 
 ---
 
@@ -49,6 +57,7 @@ FIREBASE/
 │  ├─ firebaseConfig.ts         # Your actual config (ignored by Git)
 │  └─ SAMPLE_firebaseConfig.ts  # Template committed for setup
 ├─ public/
+│  └─ favicon.ico               # Created via favicon.io
 ├─ .gitignore
 ├─ README.md
 ├─ index.html
@@ -73,7 +82,8 @@ FIREBASE/
 ## 🔥 Roadmap / Future Lessons
 
 ✅ **Lesson 1 (this repo): Authentication**  
-- Base Firebase Auth (register/login/logout, auth state tracking)
+- Base Firebase Auth (register/login/logout, auth state tracking, reset password, remember me)
+- Glassmorphism GUI and favicon integration
 
 🔜 **Lesson 2: Firestore Integration**  
 - Add `db` export to `firebaseConfig.ts`  

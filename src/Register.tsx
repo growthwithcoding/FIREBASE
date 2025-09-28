@@ -1,4 +1,3 @@
-// src/Register.tsx
 import { useState, type FormEvent } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebaseConfig";
@@ -19,37 +18,47 @@ const Register = () => {
       setEmail("");
       setPassword("");
     } catch (err: unknown) {
-      // Map common Firebase error codes to friendly text if desired
-      setError(err?.message ?? "Registration failed");
+      setError(err instanceof Error ? err.message : "Registration failed");
     } finally {
       setBusy(false);
     }
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        autoComplete="email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password (6+ chars)"
-        value={password}
-        autoComplete="new-password"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        minLength={6}
-      />
-      <button type="submit" disabled={busy}>
-        {busy ? "Creating..." : "Register"}
-      </button>
-      {error && <p role="alert">{error}</p>}
-    </form>
+    <>
+      <h2>Create Account</h2>
+      <form onSubmit={handleRegister}>
+        <div className="form-row">
+          <span className="icon-left" aria-hidden="true">👤</span>
+          <input
+            className="pill"
+            type="email"
+            placeholder="Email"
+            value={email}
+            autoComplete="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-row">
+          <span className="icon-left" aria-hidden="true">🔒</span>
+          <input
+            className="pill"
+            type="password"
+            placeholder="Password (6+ chars)"
+            value={password}
+            autoComplete="new-password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={6}
+          />
+        </div>
+        <button className="btn" type="submit" disabled={busy}>
+          {busy ? "Creating..." : "Register"}
+        </button>
+        {error && <p role="alert">{error}</p>}
+      </form>
+    </>
   );
 };
 

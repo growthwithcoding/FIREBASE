@@ -1,42 +1,142 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App.css — clean purple gradient + strong glassmorphism, no stars/forest */
+
+/* keep inputs inside the card */
+*, *::before, *::after { box-sizing: border-box; }
+
+:root{
+  --bg-top: #8b63ff;
+  --bg-mid: #5a46d6;
+  --bg-bottom: #1c0f4a;
+  --text: #ffffff;
+  --muted: #d7cfff;
+  --btn-text: #2b1366;
+}
+
+/* full-height centered layout with top ellipse glow */
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  display: grid;
+  place-items: start center;
+  background:
+    radial-gradient(900px 320px at 50% -120px, #a88cff 0%, var(--bg-top) 45%, var(--bg-mid) 70%, var(--bg-bottom) 100%);
+}
+
+/* ── glass card ───────────────────────────────────────────── */
+.auth-card{
+  width: min(92vw, 520px);
+  margin-top: 40px;
+
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 22px;
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.45),
+    0 8px 24px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.30);
+  padding: 20px 20px 18px;
+}
+
+/* vertical sheen + inner border glow */
+.auth-card::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 24%),
+    radial-gradient(120% 100% at 50% -40%, rgba(255,255,255,.20), rgba(255,255,255,0) 55%);
+  pointer-events:none;
+}
+.auth-card::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18);
+  pointer-events:none;
+}
+
+/* toggle */
+.auth-toggle{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.auth-toggle .toggle{
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.10);
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .06s ease;
+}
+.auth-toggle .toggle:hover{ transform: translateY(-1px); }
+.auth-toggle .toggle.active{
+  background: rgba(255,255,255,0.92);
+  color: var(--btn-text);
+}
+
+/* headings */
+h2{
   text-align: center;
+  margin: 8px 0 12px;
+  color: #fff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* form rows + pills */
+.form-row{ position: relative; margin: 10px 0; }
+.pill{
+  display: block;
+  width: 100%;
+  padding: 12px 44px;
+  border-radius: 999px;
+
+  background: #fff7b8;              /* soft yellow */
+  color: #20124d;
+  border: 0;
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.pill::placeholder{ color: #6b6b6b; }
+.pill:focus{ box-shadow: inset 0 0 0 2px #ffffff; }
+
+.icon-left{
+  position:absolute; left: 14px; top:50%;
+  transform: translateY(-50%);
+  opacity:.9;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* meta row (remember/forgot) */
+.meta-row{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; margin: 8px 6px 2px;
+  font-size:.95rem; color: var(--muted);
 }
+.meta-row a{ color:#fff; opacity:.9; text-underline-offset:4px; }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* buttons */
+.btn{
+  width:100%;
+  border:none; border-radius:999px;
+  padding:12px 14px; margin-top:10px;
+  background:#ffffff; color:var(--btn-text); font-weight:800;
+  cursor:pointer;
+  transition: transform .06s ease, opacity .2s ease, box-shadow .2s;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
+.btn:hover{ transform: translateY(-1px); }
+.btn:active{ opacity:.9; }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* error */
+p[role="alert"]{
+  color: #ffd1da;
+  margin: 8px 0 0;
+  text-align: center;
 }
