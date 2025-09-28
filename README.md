@@ -1,13 +1,13 @@
 # 🔑 Firebase Auth + React (Assignment 1)
 
-[![Author](https://img.shields.io/badge/author-Austin_Carlson_(growthwithcoding)-blue)](https://github.com/growthwithcoding)
+![Author](https://img.shields.io/badge/author-Austin_Carlson-blue)
 ![React](https://img.shields.io/badge/React-19.1.1-61dafb)
 ![Vite](https://img.shields.io/badge/Vite-7.1.6-9460f6)
 ![Firebase](https://img.shields.io/badge/Firebase-Auth-orange)
 ![Tests](https://img.shields.io/badge/tests-pending-lightgrey)
 ![CI](https://img.shields.io/badge/ci-pending-lightgrey)
 ![CD](https://img.shields.io/badge/cd-pending-lightgrey)
-![Version](https://img.shields.io/badge/release-v0.0.1-base-green)
+![Release](https://img.shields.io/badge/release-v0.0.1--base-green)
 
 This repository is the **Assignment 1 project** for **Building Secure User Authentication with Firebase**.  
 It forms the foundation for all **future lessons and the Module Final Project**.  
